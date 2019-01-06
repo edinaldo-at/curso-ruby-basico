@@ -1,3 +1,4 @@
+#Cria a classe de inicialização do jogo
 class Inicializacao
   system('clear')
 

@@ -1,3 +1,4 @@
+#Classe que contem as categorias e palavras de cada categoria
 class Lista 
     def self.categorias
         lista = {

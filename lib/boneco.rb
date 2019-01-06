@@ -1,3 +1,4 @@
+# A classe Boneco monta a estrutura da forma e o boneco conforme ocorrem as tentativas
 class Boneco
 
     def self.boneco(tent, erro)

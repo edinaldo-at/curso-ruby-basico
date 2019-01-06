@@ -1,19 +1,22 @@
+#faz a requisição dos arquivos necessários 
+
 require_relative 'inicializar'
 require_relative "boneco"
 require_relative 'lista'
 
+#cria a classe Forca
 class Forca
-    attr_accessor :categoria
+    attr_accessor :categoria #categoria da palavra que será sorteada
     attr_accessor :palavra #Palavra sorteada
-    attr_accessor :cont_palavra #conta quantas letras tem a palavra
+    attr_accessor :qtd_letra #recebe o size da palavra, ou seja a quantidade de letras
+    attr_accessor :letra #recebe e aletra da tentativa da vez
     attr_accessor :qtd_tent #limite de tentativas
-    attr_accessor :str_tent
-    attr_accessor :erros #Definia mensagem a ser exibida
-    attr_accessor :letra
-    attr_accessor :qtd_letra
-    attr_accessor :resul #recebe as litas da tentativa e distribui na linha
+    attr_accessor :str_tent #recebe todas a letras para mostrar quais já foram usadas
+    attr_accessor :erros #será true quando acertar e false quando errar a tentativa
+    attr_accessor :resul #recebe e distribui as letras de acordo com a posição sobre a linha
     attr_accessor :linha #linha em baixo das letras das tentativas
-       
+     
+    #chama a classe de inicialização, atribui valores aos atributos e chama o metodo que sorteia a palavra
     def initialize()
         Inicializacao.inicializando
         @categoria = ""
@@ -27,8 +30,8 @@ class Forca
         sortea_palavra()
     end
 
+    #Cria um menu para o jogador selecionar a categoria desejada
     def sortea_palavra()
-        #loop para selecionar a categoria das palavras
         v1 = 0
         while v1 == 0 || v1 == "Opção invalida"
             puts "ESCOLHA A CATEGORIA DE ACORDO COM O NÚMERO"
@@ -56,7 +59,7 @@ class Forca
         #limpa a tela
         system('clear')
 
-        #Verifica a quantidade de palavras possíveis na categoria e seleciona uma aleatória
+        #Verifica a quantidade de palavras da categoria e seleciona uma aleatoriamente
         @qtd_categ = Lista.categorias[@categoria].size
         @qtd_categ -= 1
         chave = Random.rand(0..@qtd_categ)
@@ -64,11 +67,13 @@ class Forca
         @qtd_letra = @palavra.size
     end
 
+    #contem as principair saidas de texto na tela
     def saida (tent, erro)
 
         puts "Palavra com #{@qtd_letra} letras, categoria #{@categoria}"
         puts""
 
+        #Prita na tela todas as letras que ja foram usadas
         cont_str = @str_tent.size
         i = 0
         while i <= cont_str
@@ -80,8 +85,10 @@ class Forca
         puts " "
         puts " "
        
+        #Exibe o desenha da forca
         Boneco.boneco(tent, erros)
     
+        #Printa as letras e a linha em ordem na tela
         @resul.each {|key, value|   
             print value + "   "
         }
@@ -93,20 +100,20 @@ class Forca
         puts " "
     end
 
+    #faz todo o processamento do jogo
     def jogar
 
         i=0
         tent = 0
         
-
-        #Gabarito das posições de cada @letra esperada pelo jogador
+        #com base na quantidade de letras da palavra, define a quantidade de posição das letras e da linha decorativa
         while i < @qtd_letra 
             @resul[i] = " "
             @linha[i] = "_   "
             i += 1
         end
 
-        #Inicia um jogo em um loop até o jogador acertar ou estrapolar as tentativas
+        #Compara a letra informada pelo jogador com cada posição do array palavra e distribui o que for igual ao hash resul
         while @resul.has_value?(" ") && tent < 6
             
             if @erros == true

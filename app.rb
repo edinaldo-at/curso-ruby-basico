@@ -1,8 +1,11 @@
+#Faz a requisição do arquivo forca.rb que contem a classe Forca
 require_relative 'lib/forca'
 
+#Cria um objeto da classe Forca
 start = Forca.new
 start.jogar
 
+#Pega a quantidade de tentativas da classe Forca, retorna "game ouver" se a quantidade de tentativas for igual e/ou maior que 6
 if start.qtd_tent >= 6
 
     puts  "  _____          __  __ ______    ____  _    ___      ________ _____" 
@@ -14,7 +17,8 @@ if start.qtd_tent >= 6
     puts  "                                                                       "   
 
 else
-    
+
+#Congratulações caso a quantidade de tentativas fique a baixo de 6. Usei outra forma de printar asciiart para fins de estudo
 vitoria ="_______  _______  ______    _______  _______  _______  __    _  _______  __   __             
         |       ||   _   ||    _ |  |   _   ||  _    ||       ||  |  | ||       ||  | |  |            
         |    _  ||  |_|  ||   | ||  |  |_|  || |_|   ||    ___||   |_| ||  _____||  | |  |            
