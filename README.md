@@ -1,4 +1,4 @@
-# curso-ruby-basico
+# Curso-ruby-basico
 Curso Basico de Ruby
 
 
