@@ -6,6 +6,6 @@ Curso Basico de Ruby
 
 ```
 //Execute o arquivo
-{$ ruby app.rb
+$ ruby app.rb
 ````
 
