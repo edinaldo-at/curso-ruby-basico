@@ -2,10 +2,10 @@
 Curso Basico de Ruby
 
 
-rode o script app.rb
+## Projeto de conclusão
 
-$ ruby app.rb
+```
+//Execute o arquivo
+{$ ruby app.rb
+````
 
-No menu, digite o número sejado e aperte enter
-
-Para jogar, digite a letra desejada e precione enter
